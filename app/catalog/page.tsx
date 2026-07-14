@@ -1,13 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
 import { CategoryNav } from "@/components/CategoryNav";
-import { MapPlaceholder } from "@/components/MapPlaceholder";
 import { Navbar } from "@/components/Navbar";
 import { SortControls } from "@/components/SortControls";
 import { StayCard } from "@/components/StayCard";
 import { mockStays } from "@/src/data/stays";
 import { Stay } from "@/src/types";
+
+const CatalogMap = dynamic(
+  () => import("@/components/CatalogMap").then((mod) => mod.CatalogMap),
+  { ssr: false }
+);
 
 export default function CatalogPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -68,7 +73,7 @@ export default function CatalogPage() {
                 <StayCard key={stay.id} stay={stay} />
               ))}
             </div>
-            <MapPlaceholder total={filteredStays.length} />
+            <CatalogMap stays={filteredStays} />
           </div>
         )}
       </section>

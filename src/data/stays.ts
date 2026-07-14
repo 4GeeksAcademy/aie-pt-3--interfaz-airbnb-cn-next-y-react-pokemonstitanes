@@ -21,7 +21,9 @@ export const mockStays: Stay[] = [
       "Una villa luminosa frente al mar con terraza privada, diseno moderno y atardeceres abiertos.",
     hostName: "Jorge",
     hostYears: 5,
-    amenities: ["Wifi", "Piscina", "Aire acondicionado", "Cocina equipada"]
+    amenities: ["Wifi", "Piscina", "Aire acondicionado", "Cocina equipada"],
+    latitude: 38.9067,
+    longitude: 1.4206
   },
   {
     id: "2",
@@ -43,7 +45,9 @@ export const mockStays: Stay[] = [
       "Cabana minimalista rodeada de pinos con jacuzzi exterior y senderos privados.",
     hostName: "Carla",
     hostYears: 2,
-    amenities: ["Chimenea", "Jacuzzi", "Wifi", "Mascotas permitidas"]
+    amenities: ["Chimenea", "Jacuzzi", "Wifi", "Mascotas permitidas"],
+    latitude: 45.5152,
+    longitude: -122.6784
   },
   {
     id: "3",
@@ -65,7 +69,9 @@ export const mockStays: Stay[] = [
       "Loft de dos alturas con cocina abierta, balcon frances y acceso caminando a museos.",
     hostName: "Lucia",
     hostYears: 6,
-    amenities: ["Wifi", "Lavadora", "Ascensor", "Smart TV"]
+    amenities: ["Wifi", "Lavadora", "Ascensor", "Smart TV"],
+    latitude: 40.4168,
+    longitude: -3.7038
   },
   {
     id: "4",
@@ -87,7 +93,9 @@ export const mockStays: Stay[] = [
       "Propiedad de lujo con fachada de piedra, sala panoramica y piscina climatizada.",
     hostName: "Teresa",
     hostYears: 9,
-    amenities: ["Piscina", "Barbacoa", "Parking", "Vista al oceano"]
+    amenities: ["Piscina", "Barbacoa", "Parking", "Vista al oceano"],
+    latitude: 32.7607,
+    longitude: -16.9595
   },
   {
     id: "5",
@@ -109,7 +117,9 @@ export const mockStays: Stay[] = [
       "Chalet de madera con vistas a la montana, sauna privada y zona de fuego exterior.",
     hostName: "Nora",
     hostYears: 4,
-    amenities: ["Sauna", "Wifi", "Calefaccion", "Guardaesquis"]
+    amenities: ["Sauna", "Wifi", "Calefaccion", "Guardaesquis"],
+    latitude: 46.0207,
+    longitude: 7.7491
   },
   {
     id: "6",
@@ -131,6 +141,8 @@ export const mockStays: Stay[] = [
       "Espacio contemporaneo en zona gastronomica con terraza privada y rooftop comun.",
     hostName: "Rene",
     hostYears: 3,
-    amenities: ["Rooftop", "Wifi", "Zona de trabajo", "Aire acondicionado"]
+    amenities: ["Rooftop", "Wifi", "Zona de trabajo", "Aire acondicionado"],
+    latitude: 19.4326,
+    longitude: -99.1332
   }
 ];
