@@ -18,6 +18,7 @@ export default function RoomDetailPage() {
   const [room, setRoom] = useState<Stay | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [guests, setGuests] = useState(1);
+  const [nights, setNights] = useState(1);
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
@@ -105,7 +106,10 @@ export default function RoomDetailPage() {
               location={room.location}
             />
             <HostInfo hostName={room.hostName} hostYears={room.hostYears} />
-            <p className="text-sm leading-7 text-stone-600">{room.description}</p>
+            <section className="space-y-2 rounded-2xl border border-stone-200 bg-white p-4">
+              <h2 className="text-xl font-semibold text-stone-900">Descripcion de la habitacion</h2>
+              <p className="text-sm leading-7 text-stone-600">{room.description}</p>
+            </section>
             <RoomAmenities amenities={room.amenities} />
           </div>
 
@@ -113,8 +117,10 @@ export default function RoomDetailPage() {
             pricePerNight={room.pricePerNight}
             currency={room.currency}
             guests={guests}
+            nights={nights}
             maxGuests={room.maxGuests}
             onChangeGuests={setGuests}
+            onChangeNights={setNights}
           />
         </div>
       </section>

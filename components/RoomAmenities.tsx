@@ -1,3 +1,5 @@
+import { AmenityIcon } from "@/components/AmenityIcon";
+
 interface RoomAmenitiesProps {
   amenities: string[];
 }
@@ -12,9 +14,7 @@ export function RoomAmenities({ amenities }: RoomAmenitiesProps) {
             key={item}
             className="flex items-center gap-3 rounded-xl border border-stone-200 bg-white p-3"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-stone-100 text-xs font-semibold text-stone-700">
-              SV
-            </span>
+            <AmenityIcon amenity={item} />
             <span className="text-sm text-stone-700">{item}</span>
           </div>
         ))}
