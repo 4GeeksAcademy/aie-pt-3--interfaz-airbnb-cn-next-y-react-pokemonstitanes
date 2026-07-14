@@ -14,9 +14,12 @@ export interface Stay {
   hostName: string;
   hostYears: number;
   amenities: string[];
+  latitude: number;
+  longitude: number;
 }
 
 export interface CategoryItem {
   id: string;
   label: string;
+  icon: string;
 }

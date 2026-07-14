@@ -8,11 +8,11 @@ interface NavbarProps {
 
 export function Navbar({ searchTerm, onSearchChange }: NavbarProps) {
   return (
-    <header className="sticky top-0 z-20 border-b border-stone-200 bg-stone-50/95 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-stone-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-6">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="text-xl font-semibold tracking-tight text-rose-500">
-            Airbnb CN
+            airbnb
           </Link>
           <button
             type="button"
@@ -24,11 +24,17 @@ export function Navbar({ searchTerm, onSearchChange }: NavbarProps) {
         </div>
         <div className="flex items-center gap-3 md:flex-1 md:justify-end">
           <SearchBar searchTerm={searchTerm} onSearchChange={onSearchChange} />
+          <Link
+            href="/catalog"
+            className="hidden rounded-full border border-stone-200 bg-white px-4 py-3 text-sm font-medium text-stone-700 shadow-sm shadow-stone-200/60 md:inline-flex"
+          >
+            Catalogo
+          </Link>
           <button
             type="button"
             className="hidden rounded-full border border-stone-200 bg-white px-4 py-3 text-sm font-medium text-stone-700 shadow-sm shadow-stone-200/60 md:inline-flex"
           >
-            Menu
+            Usuario
           </button>
         </div>
       </div>

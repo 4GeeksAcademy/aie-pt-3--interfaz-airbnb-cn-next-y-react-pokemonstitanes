@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
 :root {
   --background: #f8f7f4;
@@ -29,4 +30,13 @@ body {
 button,
 input {
   font: inherit;
+}
+
+.map-pin {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #ef4444;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
