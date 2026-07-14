@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CategoryNav } from "@/components/CategoryNav";
 import { Navbar } from "@/components/Navbar";
@@ -43,9 +44,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-4 py-6 md:px-6 md:py-8">
         <div className="mb-6 space-y-2">
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-rose-500">
-            Estancias destacadas
-          </p>
+          <p className="text-sm font-medium uppercase tracking-[0.24em] text-rose-500">Estancias destacadas</p>
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>
               <h1 className="text-3xl font-semibold tracking-tight text-stone-900">
@@ -55,10 +54,17 @@ export default function Home() {
                 Resultados visibles: {filteredStays.length}
               </p>
             </div>
-            <p className="max-w-xl text-sm text-stone-500">
-              Explora alojamientos con carga simulada, filtros por categoria y
-              busqueda en tiempo real.
-            </p>
+            <div className="flex items-center gap-3">
+              <p className="max-w-xl text-sm text-stone-500">
+                Explora alojamientos con filtros por categoria y busqueda en tiempo real.
+              </p>
+              <Link
+                href="/catalog"
+                className="rounded-full bg-stone-900 px-5 py-2 text-sm font-medium text-white"
+              >
+                Ver catalogo
+              </Link>
+            </div>
           </div>
         </div>
 

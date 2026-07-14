@@ -19,4 +19,5 @@ export interface Stay {
 export interface CategoryItem {
   id: string;
   label: string;
+  icon: string;
 }
