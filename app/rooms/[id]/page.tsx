@@ -12,13 +12,27 @@ import { RoomHeader } from "@/components/RoomHeader";
 import { mockStays } from "@/src/data/stays";
 import { Stay } from "@/src/types";
 
+function toIsoDate(date: Date): string {
+  return date.toISOString().slice(0, 10);
+}
+
+function addDaysToDate(baseDate: string, days: number): string {
+  const date = new Date(`${baseDate}T00:00:00`);
+  date.setDate(date.getDate() + days);
+  return toIsoDate(date);
+}
+
+const defaultCheckInDate = toIsoDate(new Date(Date.now() + 24 * 60 * 60 * 1000));
+const defaultCheckOutDate = addDaysToDate(defaultCheckInDate, 1);
+
 export default function RoomDetailPage() {
   const params = useParams<{ id: string }>();
   const [isLoading, setIsLoading] = useState(true);
   const [room, setRoom] = useState<Stay | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [guests, setGuests] = useState(1);
-  const [nights, setNights] = useState(1);
+  const [checkInDate, setCheckInDate] = useState(defaultCheckInDate);
+  const [checkOutDate, setCheckOutDate] = useState(defaultCheckOutDate);
 
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
@@ -32,6 +46,30 @@ export default function RoomDetailPage() {
   }, [params.id]);
 
   const totalImages = room?.images.length ?? 0;
+  const nights = useMemo(() => {
+    const checkIn = new Date(`${checkInDate}T00:00:00`).getTime();
+    const checkOut = new Date(`${checkOutDate}T00:00:00`).getTime();
+    const diffInMs = checkOut - checkIn;
+    const diffInNights = Math.floor(diffInMs / (24 * 60 * 60 * 1000));
+
+    return diffInNights > 0 ? diffInNights : 0;
+  }, [checkInDate, checkOutDate]);
+
+  const minCheckOutDate = addDaysToDate(checkInDate, 1);
+
+  const handleChangeCheckInDate = (nextDate: string) => {
+    setCheckInDate(nextDate);
+    if (nextDate >= checkOutDate) {
+      setCheckOutDate(addDaysToDate(nextDate, 1));
+    }
+  };
+
+  const handleChangeCheckOutDate = (nextDate: string) => {
+    if (nextDate > checkInDate) {
+      setCheckOutDate(nextDate);
+    }
+  };
+
   const safeImageIndex = useMemo(() => {
     if (totalImages === 0) {
       return 0;
@@ -117,10 +155,14 @@ export default function RoomDetailPage() {
             pricePerNight={room.pricePerNight}
             currency={room.currency}
             guests={guests}
+            checkInDate={checkInDate}
+            checkOutDate={checkOutDate}
+            minCheckOutDate={minCheckOutDate}
             nights={nights}
             maxGuests={room.maxGuests}
             onChangeGuests={setGuests}
-            onChangeNights={setNights}
+            onChangeCheckInDate={handleChangeCheckInDate}
+            onChangeCheckOutDate={handleChangeCheckOutDate}
           />
         </div>
       </section>

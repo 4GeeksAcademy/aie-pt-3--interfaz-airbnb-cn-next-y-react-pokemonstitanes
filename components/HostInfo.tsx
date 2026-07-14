@@ -11,7 +11,7 @@ export function HostInfo({ hostName, hostYears }: HostInfoProps) {
       </div>
       <div>
         <h2 className="text-base font-semibold text-stone-900">Anfitrion: {hostName}</h2>
-        <p className="text-sm text-stone-600">{hostYears} anos recibiendo huespedes</p>
+        <p className="text-sm text-stone-600">{hostYears} años recibiendo huespedes</p>
       </div>
     </section>
   );
